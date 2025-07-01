@@ -1,0 +1,60 @@
+<div class="dashboard">
+
+  <main class="row g-3 mt-3">
+    @for (card of cardData |search:searchValue; track $index) {
+    <div class="col-lg-3 col-md-4 col-sm-6 flex-grow-1  ">
+      <!-- card -->
+      <div class="card border-0  radius-card p-3 shadow h-100 overflow-hidden">
+
+        <div class="header d-flex align-items-center gap-3">
+          <div class="icon px-1  text-center rounded " [style.background-color]="card.color">
+            <i [attr.data-eva]="card.icon" data-eva-fill="#fff" data-eva-height="30" data-eva-infinite="false"
+              data-eva-animation="flip"></i>
+          </div>
+          <h5 class="title m-0 fs-6  text-capitalize overflow-hidden" style="color: var(--card-text);">{{card.title}}
+          </h5>
+        </div>
+
+        <div class="mid my-3 ">
+          <span class="value fw-bold fs-2" [countUp]=" card.value" [options]="{ separator: ',' , duration: 3}">
+            0
+          </span>
+        </div>
+
+        <div class="footer flex-between flex-wrap">
+          <div class="change-label small " style="color: var(--card-text);">
+            {{card.changeLabel}}
+          </div>
+
+          <div class="change-value d-flex align-items-center justify-content-center  " [style.color]="card.color">
+            <span class="value">
+              <span *ngIf="card.change > 0">+</span>{{card.change.toFixed(2)}}
+            </span>
+            <i [attr.data-eva]="card.change > 0 ?  'diagonal-arrow-right-up' : 'diagonal-arrow-right-down'"
+              [attr.data-eva-fill]="card.color" data-eva-height="30" data-eva-infinite="false"
+              data-eva-animation="zoom"></i>
+          </div>
+        </div>
+        <div class="line-color radius-card" [style.background-color]="card.color">
+
+        </div>
+      </div>
+
+    </div>
+    }
+
+  </main>
+
+  <div class="charts mt-4 ">
+    <!-- financial charts & Orders ( completed ,  Canceled  ) -->
+    <app-charts></app-charts>
+
+    <!-- total charts ( Assets ,  Investments  ) -->
+    <app-total-charts></app-total-charts>
+
+    <!-- orders table -->
+    <app-orders-table></app-orders-table>
+
+  </div>
+
+</div>

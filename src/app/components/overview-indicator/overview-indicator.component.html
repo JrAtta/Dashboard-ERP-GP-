@@ -1,0 +1,50 @@
+<div class="row gy-3 pe-0 me-0">
+      <div class="charts col-lg col-sm-12 me-lg-3  radius-card shadow overflow-hidden">
+        <div class="header flex-between flex-wrap mb-4">
+          <h3 class="fs-4 text-capitalize fw-bold me-3">
+            invoice overview
+          </h3>
+          <div class="flex-center p-2 rounded-circle " style=" background: var(--bg-sidebar);" (click)="sortInvoiceOverview()">
+          <i data-eva="flip" data-eva-fill="var(--main-color)" data-eva-height="24" data-eva-width="24" data-eva-infinite="false"  data-eva-animation="flip" ></i>
+          </div>
+        </div>
+        @for (invoice of invoiceOverview |search:searchValue; track invoice.status) {
+
+        <div class="overview-container mb-4 ">
+          <div class="overview-data flex-between flex-wrap align-items-start">
+            <h6 class="title fs-6 text-capitalize  me-3">
+              {{invoice.status}}
+            </h6>
+            <div class=" invoice flex-between gap-4">
+              <div class="invoice-number fs-5">
+                {{invoice.count}}
+              </div>
+
+              <div class="invoice-amount text-uppercase fs-6" [countUp]="invoice.total" [options]="{ separator: ',' , duration: 3 , decimalPlaces:0 , prefix:'usd ',suffix:'$'}">
+              </div>
+            </div>
+          </div>
+
+          <div class="overview-bar ">
+            <div class="overview-inset-bar" [ngStyle]="{'width': invoice.percent + '%' , 'background': invoice.color , 'transition': ' transition: width 0.6s ease-in-out, background 0.3s;'}  " [ngClass]="{'animate': animate}">
+
+            </div>
+          </div>
+        </div>
+
+      }
+      </div>
+
+      <!-- indecator chart -->
+      <div class="charts  position-relative radius-card shadow overflow-hidden col-lg col-sm-12 ">
+        <div class="chart  flex-center" >
+          <plotly-plot [config]="config" [data]="indicatorData" [layout]="indicatorLayout"></plotly-plot>
+        </div>
+        <div class="flex-center flex-column gap-2 amount-container" >
+          <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0-960 960 960" width="50px" fill="var(--main-color)"><path d="m296-320 122-122 80 80 142-141v63h80v-200H520v80h63l-85 85-80-80-178 179 56 56Zm-96 200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+          <h6 class=" text-capitalize  ">amount owed</h6>
+          <span class="amount fs-2 fw-bold" [ngStyle]=" {'color': 'var(--green-sidebar)'}"  [countUp]="amountOwen" [options]="{ separator: ',' , duration: 3 , decimalPlaces:2 , prefix:'$'}"> </span>
+        </div>
+      </div>
+
+    </div>

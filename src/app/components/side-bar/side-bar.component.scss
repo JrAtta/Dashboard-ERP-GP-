@@ -1,0 +1,77 @@
+
+// $nav-elements-color: #A3A3A3;
+.side-bar{
+  padding-top: 20px;
+  padding-inline: 10px;
+
+  .expand-icon{
+    cursor: pointer;
+  @media (max-width:868px) {
+    display: none;
+  }
+  }
+  .head-nav{
+    color: var(--main-color);
+
+    .logo{
+    transform: translateX(-10px);
+    }
+    .expand-icon{
+    transform: translateX(-10px);
+
+    }
+  }
+
+  .elements-nav {
+    color: var(--bg-main);
+    color:var(--elements-color);
+    li{
+
+      cursor: pointer;
+      &:hover{
+        background-color: var(--bg-main);
+        color: var(--main-color);
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover span{
+        transform: translateX(10px);
+        transition: transform 0.3s linear;
+
+      }
+
+      span{
+        @media (max-width:868px) {
+          display: none;
+        }
+      }
+      svg{
+        @media (max-width:431px) {
+          translate: -10px;
+          transition: translate 0.3s linear;
+
+        }
+      }
+
+    }
+  }
+
+
+
+
+
+
+
+
+  .expand-icon {
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .theme-toggle {
+    cursor: pointer;
+    padding: 10px;
+  }
+
+}
+
+

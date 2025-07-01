@@ -1,0 +1,104 @@
+:host{
+    .charts{
+
+    color: var(--main-color);
+    background-color: var(--bg-card);
+    padding: 20px;
+
+    &:hover{
+      transform: translateY( -5px);
+      transition:all 0.3s ease-in-out;
+
+    }
+    .chart{
+      height:300px;
+      width:100%;
+
+       @media (max-width:480px) {
+        height: fit-content;
+
+    }
+    }
+
+     .overview-container{
+       transition: all 0.4s ease-in-out;
+      .invoice{
+        color: var(--card-text);
+        margin-bottom: 5px;
+        .invoice-number{
+          position: relative;
+        &::after{
+          content: '';
+          position: absolute;
+          border-radius: 8px;
+          top: 4px;
+          bottom: 0;
+          left: 24px;
+          width: 2px;
+          height: 20px;
+          background-color: var(--card-text);
+        }
+      }
+    }
+    .overview-bar{
+      position: relative;
+      width: 100%;
+      height: 20px;
+      border-radius: 30px;
+      background: var(--bg-sidebar);
+      overflow: hidden;
+      .overview-inset-bar{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        // width:  will be dynamic from Ts
+        border-radius: 30px;
+        transition: width 0.6s linear;
+        opacity: 0;
+        transform: translateX(-100%);
+
+
+      }
+      .animate {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideIn 1s  linear forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+    }
+  }
+
+  .amount-container{
+    translate:  0 -30%;
+
+
+     h6{
+      font-size: 20px;
+    }
+    @media (max-width:481px) {
+    translate:  0 -45%;
+
+    svg{
+      height: 37px;
+      width: 37px;
+    }
+    h6{
+      font-size: 16px;
+    }
+    }
+
+
+  }
+}
+}

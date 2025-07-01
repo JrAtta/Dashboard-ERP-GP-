@@ -1,0 +1,99 @@
+.charts-container{
+  height: 100%;
+  width: 100%;
+  .charts{
+
+    color: var(--main-color);
+    background-color: var(--bg-card);
+    padding: 20px;
+    @media (min-width:768px) , (max-width:668px) {
+      margin-right: 1rem;
+    }
+    &:hover{
+      transform: translateY( -5px);
+      transition:all 0.3s ease-in-out;
+      .chart{
+        animation: upDown .3s infinite  linear  alternate;
+      }
+    }
+    .header{
+      @media (max-width:460px) {
+        flex-wrap:wrap  ;
+      }
+    }
+    .chart-sec{
+
+      @media (max-width:460px) {
+        flex-direction: column;
+      }
+    .value{
+      position: relative;
+      z-index: 1111;
+      @media (max-width:768px) {
+
+        transform: translateY(40px);
+      }
+      @media (min-width:460px) {
+
+        // transform: translateY(35px);
+      }
+      @media (max-width:460px) {
+
+        transform: translate(0 , 10px);
+      }
+    }
+
+    .chart{
+      position: relative;
+      height:50px;
+      left: calc(100% - 220px);
+      transform: translate(40px,-30px);
+
+
+      @media (max-width:992px) {
+        // left: calc(100% - 290px);
+        height:100px;
+        transform: translate(40px,-20px);
+      }
+      @media (max-width:767px) {
+        left: calc(100% - 290px);
+        transform: translate(20px,20px);
+
+      }
+
+
+      @media (max-width:460px) {
+        left: calc(100% - 200px);
+        transform: translate(20px,-20px);
+
+
+      }
+
+
+
+    }
+  }
+  .change-label{
+    position: relative;
+    z-index: 1111;
+
+  }
+  .title{
+    color: var(--card-text);
+    white-space: nowrap;
+    }
+}
+
+
+
+}
+
+@keyframes upDown {
+  from{
+    padding-top: 0px;
+
+  }
+  to{
+    padding-top: 10px;
+  }
+}

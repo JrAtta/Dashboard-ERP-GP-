@@ -1,0 +1,75 @@
+<div class="total-charts mt-3">
+  <div class="row gy-3 pe-0">
+      <div class="col-lg-6 col-md-12 pe-0 ">
+        <div class="charts2 radius-card shadow overflow-hidden ">
+          <!-- Total Assets Card -->
+           <div class="assets-card">
+            <div class="card-title fs-6 ">
+              Total Assets
+              <span class="info-icon">
+                <i data-eva="info" data-eva-fill="#A3A3A3" data-eva-height="20" data-eva-infinite="false"
+                  data-eva-animation="flip"></i>
+              </span>
+            </div>
+            <div class="main-value ps-2 mt-2 fs-3 fw-bold " [countUp]="assetsMainValue" [options]="{ separator: ',' , duration: 4 , decimalPlaces:2 , prefix:'$'}">
+              <!-- ${{formattedInteger}}<span class="decimal ">.{{decMainValue}}</span> -->
+            </div>
+                <!-- ال condition  هنا هيكون علي النسبه مش علي القيمه كلها  -->
+
+            <div class="change-indicator  flex-center justify-content-start gap-2 fs-6 " [ngClass]="intMainValue > 0 ? 'positive' : 'negative'">
+              <div class="change-value  flex-center justify-content-start ">
+                <!-- ال condition  هنا هيكون علي النسبه مش علي القيمه كلها  -->
+
+                <i [attr.data-eva]=" intMainValue > 0 ? 'arrow-up' : 'arrow-down' " [attr.data-eva-fill]="intMainValue > 0 ? '#60D479' : '#ff6b6b'" data-eva-height="24" data-eva-infinite="false"
+                  data-eva-animation="pulse"></i>
+                  <!-- اعمل countUP  هنا  -->
+                  <span class=""  >12%</span>
+                </div>
+              <span> <span [countUp]="assetsMainValue * 0.12" [options]="{ separator: ',' , duration: 3 , decimalPlaces:2 , prefix: assetsMainValue * .12 > 0 ? '+$' : '-$'}"></span>  in this year</span>
+            </div>
+           </div>
+          <div class="assets-chart d-block">
+             <plotly-plot [data]="assetsChartData" [layout]="assetsChartLayout" [config]="ChartConfig" [useResizeHandler]="true"></plotly-plot>
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+      <div class="col-lg-6 col-md-12 pe-0">
+        <div class="charts2 radius-card shadow overflow-hidden ">
+          <!-- Total Investment Card -->
+
+           <div class="investment-card">
+            <div class="card-title fs-6 ">
+              Total Investments
+              <span class="info-icon">
+                <i data-eva="info" data-eva-fill="#A3A3A3" data-eva-height="20" data-eva-infinite="false"
+                  data-eva-animation="flip"></i>
+              </span>
+            </div>
+            <div class="main-value ps-2 mt-2 fs-3 fw-bold" [countUp]="investmentsMainValue" [options]="{ separator: ',' , duration: 3 , decimalPlaces:2 , prefix:'$'}">
+              0
+            </div>
+                <!-- ال condition  هنا هيكون علي النسبه مش علي القيمه كلها  -->
+
+            <div class="change-indicator  flex-center justify-content-start gap-2 fs-6 " [ngClass]="investmentsMainValue > 0 ? 'positive' : 'negative'">
+              <div class="change-value  flex-center justify-content-start ">
+                <!-- ال condition  هنا هيكون علي النسبه مش علي القيمه كلها  -->
+                <i [attr.data-eva]=" investmentsMainValue > 0 ? 'arrow-up' : 'arrow-down' " [attr.data-eva-fill]="investmentsMainValue > 0 ? '#60D479' : '#ff6b6b'" data-eva-height="24" data-eva-infinite="false"
+                  data-eva-animation="pulse"></i>
+                <span class="">20%</span>
+              </div>
+              <span><span [countUp]="investmentsMainValue * .2 " [options]="{ separator: ',' , duration: 3 , decimalPlaces:2 , prefix: investmentsMainValue * .2 > 0 ? '+$' : '-$' }" ></span> in this year</span>
+            </div>
+           </div>
+
+          <div class="investment-chart d-block">
+            <plotly-plot [data]="investmentChartData" [layout]="investmentChartLayout" [config]="ChartConfig" [useResizeHandler]="true"></plotly-plot>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

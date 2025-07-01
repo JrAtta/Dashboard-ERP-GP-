@@ -1,0 +1,53 @@
+
+.total-charts{
+  width: 100%;
+  height: 100%;
+   .charts2{
+    color: var(--main-color);
+    background-color: var(--bg-card);
+    padding: 20px;
+    padding-bottom: 0;
+
+      .assets-card,
+      .investment-card{
+        .card-title{
+          color: var(--card-text);
+        }
+        .decimal{
+        color: var(--card-text);
+        font-size:smaller;
+      }
+      .positive{
+        color: var(--green-main);
+      }
+      .negative{
+        color: #ff6b6b;
+      }
+      .change-indicator{
+      @media (max-width:402px) {
+        flex-direction: column;
+        align-items: start;
+      }
+      }
+    }
+
+ &:hover{
+      transform: translateY( -5px);
+      transition:all 0.3s ease-in-out;
+      .chart{
+        animation: upDown .3s infinite  linear  alternate;
+      }
+    }
+    .assets-chart{
+      height:400px;
+      width:100%;
+    @media (max-width:400px) {
+      height: 300px;
+      }
+    }
+    .investment-chart{
+      height:400px;
+      width:100%;
+    }
+}
+}

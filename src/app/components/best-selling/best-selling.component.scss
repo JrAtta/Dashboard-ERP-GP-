@@ -1,0 +1,17 @@
+:host{
+
+  width: 100%;
+  .charts{
+
+    color: var(--main-color);
+    background-color: var(--bg-card);
+    padding: 20px;
+
+    &:hover{
+      transform: translateY( -5px);
+      transition:all 0.3s ease-in-out;
+
+    }
+  }
+
+}

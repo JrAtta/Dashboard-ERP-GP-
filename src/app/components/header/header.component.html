@@ -1,0 +1,38 @@
+<div class="w-100">
+  <header class="dashboard-header flex-between flex-wrap gap-3">
+    <div class="header text-capitalize fw-bold ">
+      <h5 class="m-0 fs-5 fw-bold"> data analytics visualization</h5>
+    </div>
+    <div class="action-btn d-flex align-items-center  gap-3 flex-wrap ">
+
+      <!-- toggle mode -->
+      <div class="theme-toggle px-2 py-1 text-center rounded border-color order-4 order-md-1" (click)="toggleTheme()">
+        <i [attr.data-eva]="currentTheme === 'light' ? 'moon' : 'sun'" data-eva-animation="pulse"
+          [attr.data-eva-fill]="currentTheme === 'light' ? 'gray' : '#cccccc'" data-eva-height="30"></i>
+      </div>
+
+      <!-- Notification -->
+      <div class="px-2 py-1 text-center rounded border-color order-2 d-none d-sm-block">
+        <i data-eva="bell" data-eva-fill="#A3A3A3" data-eva-height="30" data-eva-infinite="false"
+          data-eva-animation="shake"></i>
+      </div>
+
+      <!-- info -->
+      <div class="px-2 py-1 text-center rounded border-color order-3 d-none d-sm-block">
+        <i data-eva="info" data-eva-fill="#A3A3A3" data-eva-height="30" data-eva-infinite="false"
+          data-eva-animation="flip" class=""></i>
+      </div>
+
+      <!-- seacrh buton -->
+      <div class="px-2 py-2 text-center rounded border-color order-md-4 sm-order-1  " id="search-field">
+        <input type="text" name="" id="" placeholder="Search anything here" class=""  (input)="onSearch($event)">
+        <i data-eva="search" data-eva-fill="#A3A3A3" data-eva-height="30" data-eva-infinite="false"
+          data-eva-animation="false"></i>
+
+
+      </div>
+
+
+    </div>
+  </header>
+</div>

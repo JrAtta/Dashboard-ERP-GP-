@@ -1,0 +1,9 @@
+<div class="dash-layout">
+  <div class="side-bar" [class.collapsed]="istoggled">
+    <app-side-bar (toggleSideBar)="toggleSideBar()"  ></app-side-bar>
+  </div>
+  <div class="main " [class.expand]="istoggled">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </div>
+</div>

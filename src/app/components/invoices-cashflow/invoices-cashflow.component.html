@@ -1,0 +1,17 @@
+
+<div class="row g-3 mb-3">
+
+    <div class="charts me-lg-3  radius-card shadow overflow-hidden col-lg col-sm-12  ">
+      <h6 class="text-capitalize mb-0" style="font-size: 18px;">Invoices Status</h6>
+        <div class="chart  flex-center">
+          <plotly-plot [config]="config" [data]="pieData" [layout]="pieLayout"></plotly-plot>
+        </div>
+      </div>
+    <div class="charts   radius-card shadow overflow-hidden col-lg col-sm-12  ">
+        <div class="chart ">
+            <h6 class=" mb-0  " style='font-size: 18px; '>Cash Flow Snapshot</h6>
+          <plotly-plot [config]="config" [data]="barData" [layout]="barLayout"></plotly-plot>
+        </div>
+      </div>
+
+      </div>

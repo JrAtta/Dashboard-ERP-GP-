@@ -1,0 +1,59 @@
+ <div class="table-container  radius-card shadow-lg  mt-4">
+      <div class="flex-between">
+        <h3 class="fs-3 mb-4 " >Recent Orders</h3>
+        <select class="p-2 rounded " title="select"  [(ngModel)]="limit" (ngModelChange)="setLimit($event)" >
+          <option  *ngFor="let option of optionsLimit" [value]="option">
+            {{option === 'All' ? 'All' : option}}
+          </option>
+
+        </select>
+      </div>
+    <div class="table-parent w-100 overflow-auto">
+
+      <table class="w-100 text-center">
+          <thead class="">
+            <tr>
+              <th class="cursor" (click)="sortData('date')">Date
+                <span *ngIf="sortColumn === 'date'">
+                  {{ sortDirection === 'asc' ? '⭡' : '⭣' }}
+                </span>
+              </th>
+              <th class="cursor" (click)="sortData('orderId')">Order ID
+                 <span *ngIf="sortColumn === 'orderId'">
+                  {{ sortDirection === 'asc' ? '⭡' : '⭣' }}
+                </span>
+              </th>
+              <th class="cursor" (click)="sortData('customer')">Customer
+                 <span *ngIf="sortColumn === 'customer'">
+                  {{ sortDirection === 'asc' ? '⭡' : '⭣' }}
+                </span>
+              </th>
+              <th class="cursor" (click)="sortData('value')">Value
+                 <span *ngIf="sortColumn === 'value'">
+                  {{ sortDirection === 'asc' ? '⭡' : '⭣' }}
+                </span>
+              </th>
+              <th class="cursor" (click)="sortData('status')">Status
+                 <span *ngIf="sortColumn === 'status'">
+                  {{ sortDirection === 'asc' ? '⭡' : '⭣' }}
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of displayOrders |search:searchValue">
+              <td>{{ order.date }}</td>
+              <td>{{ order.orderId }}</td>
+              <td>{{ order.customer }}</td>
+              <td>{{ order.value | currency }}</td>
+              <td>
+                <span class="status" [ngClass]="order.status.toLowerCase()">
+                  {{ order.status }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+  </div>

@@ -1,0 +1,52 @@
+.dashboard{
+  width: 100%;
+  color: var(--main-color);
+ 
+
+  main{
+
+    .card{
+      position: relative;
+      background: var(--bg-card); 
+      color: var(--main-color);
+      &:hover{
+        cursor: pointer;
+        transform: translateY(-5px);
+        transition: all .2s linear;
+
+        .value{
+          padding-left: 7px;
+          transition: padding-left .3s linear;
+
+        }
+        .icon{
+          animation: upDown .3s infinite  alternate;
+        }
+      }
+    }
+    .line-color{
+      position: absolute;
+      top:25%;
+      right: 0;
+      height: 50%;
+      width: 3px;
+      // background: #000; 
+      z-index: 11;
+    }
+  }
+}
+
+
+
+
+@keyframes upDown {
+  from{
+    transform: translateY(0);
+
+
+  }
+  to{
+    transform: translateY(-5px);
+
+  }
+}

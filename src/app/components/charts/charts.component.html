@@ -1,0 +1,59 @@
+<div class="charts-container ">
+
+  <div class="row gy-3  ">
+    <!-- performance chart -->
+    <div class="col-lg-8 col-md-12 pe-0">
+      <div class="charts radius-card shadow overflow-hidden pe-0 d-block" style=" height:500px;" >
+        <h6 class="fs-5 text-capitalize" style="font-size: 20px;">
+          financial performance
+        </h6>
+          <plotly-plot [data]="performanceChartData" [layout]="performanceChartLayout" [config]="ChartConfig"
+          [useResizeHandler]="true"   id="myDiv" ></plotly-plot>
+        </div>
+
+
+    </div>
+
+    <!-- Completed and cancelled Orders -->
+    <div class="col-lg-4 col-md-12  row g-3 ps-lg-0   m-0">
+      @for (state of quickStats |search:searchValue; track $index) {
+      <div class="charts radius-card shadow col-lg-12 col-md col-12  overflow-hidden  ">
+
+
+        <div class="d-flex flex-column  justify-content-between h-100">
+          <div class="flex-between header ">
+            <div class="fs-6 title text-capitalize" >
+              {{state.title}}
+            </div>
+            <div class="cahnge-div flex-center gap-1">
+              <i [attr.data-eva]=" state.change > 0 ? 'arrow-circle-up-outline' :  'arrow-circle-down-outline' " [attr.data-eva-fill]="state.colorIcon" data-eva-height="30"
+                data-eva-infinite="false" data-eva-animation="flip"></i>
+              <span class="fs-6 " [style.color]="state.colorIcon" >
+                <span *ngIf="state.change > 0">+</span>{{state.change}}
+              </span>
+
+            </div>
+          </div>
+          <div class="d-md-block d-flex flex-wrap gap-3 chart-sec">
+
+            <div class="value my-0 my-md-3 fw-bold fs-2  " [countUp]="state.value"
+              [options]="{ separator: ',' , duration: 3}">0</div>
+
+            <div class="chart d-block  ">
+              <plotly-plot [data]="state.chartData" [layout]="state.chartLayout"
+                [config]="ChartConfig" [useResizeHandler]="true"></plotly-plot>
+            </div>
+
+          </div>
+          <div class="change-label small mt-3" style="color: var(--card-text);">{{state.changeLabel}}</div>
+        </div>
+      </div>
+
+      }
+    </div>
+
+
+  </div>
+
+
+</div>

@@ -1,0 +1,79 @@
+.table-container{
+  color: var(--main-color);
+  background-color: var(--bg-card);
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+  padding-bottom: 0;
+  &:hover{
+    transform: translateY( -5px);
+    transition:transform 0.3s ease-in-out;
+
+  }
+
+ select{
+   background-color: var(--bg-card);
+   outline: none;
+   color: var(--main-color);
+
+ }
+ .table-parent{
+   background: #dbe7e4;
+  background: var(--bg-table);
+  border-radius: 15px 15px 0 0;
+  width: 100%;
+ }
+
+
+  th {
+    color: var(--card-text);
+    background: var(--bg-th) ;
+    font-weight: 500;
+    padding: 15px 8px;
+    white-space: nowrap;
+    &:first-child {
+      border-radius: 15px 0 0 0;
+    }
+    &:last-child {
+      border-radius: 0 15px 0 0;
+    }
+  }
+
+   td {
+    padding: 15px 8px;
+    color: var(--card-text);
+    white-space: nowrap;
+  }
+
+  tbody tr:hover {
+     transition: all 0.3s linear;
+     &:not(:last-child){
+       transform: translateY(-5px);
+
+      }
+      background:var(--table-hover);
+
+  }
+
+  .status {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .status.completed {
+    background-color: #d1fae5;
+    color: #10b981;
+  }
+
+  .status.pending {
+    background-color: #fef3c7;
+    color: #f59e0b;
+  }
+
+  .status.cancelled {
+    background-color: #fee2e2;
+    color: #ef4444;
+  }
+
+}

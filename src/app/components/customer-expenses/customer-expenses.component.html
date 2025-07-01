@@ -1,0 +1,18 @@
+  <div class="row gy-3 mt-2 ">
+
+        <div class="charts   radius-card shadow overflow-hidden col-lg col-md-12  me-lg-3 ">
+          <div class=" " style="height: 400px;">
+            <h6 class=" text-capitalize  " style="font-size: 18px;"> Customer Orders vs Revenue</h6>
+
+            <plotly-plot [config]="config" [data]="customerData" [layout]="customerLayout"></plotly-plot>
+          </div>
+        </div>
+
+        <div class="charts   radius-card shadow overflow-hidden col-lg col-md-12  ">
+          <div class="expenses-breakdown ">
+            <h6 class=" text-capitalize  " style="font-size: 18px;"> monthly expenses breakdown </h6>
+            <plotly-plot [config]="config" [data]="expensesData" [layout]="expensesLayout"></plotly-plot>
+          </div>
+        </div>
+
+      </div>

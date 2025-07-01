@@ -1,0 +1,38 @@
+<div class="side-bar ">
+  <nav>
+    <div class="head-nav flex-between align-items-start  " >
+      <div class="logo flex-between gap-2 flex-column ">
+        <img src="images/freepik_assistant_1751261155894.png" alt=""  height="50" class="object-fit-cover">
+        <!-- <h6 class=" fw-bold m-0 text-nowrap text-info">
+        Dot ERP
+        </h6> -->
+      </div>
+
+      <div class="expand-icon " (click)="toggleSideBarEvent()">
+        <i  data-eva="layout" data-eva-animation="pulse" data-eva-fill="#A3A3A3" data-eva-height="30"  data-eva-infinite="false"  data-eva-animation="flip" ></i>
+      </div>
+
+
+
+    </div>
+
+    <div class="elements-nav  mt-5">
+      <ul class="d-flex flex-column gap-1  px-0">
+        <li class="rounded overflow-hidden ">
+          <a routerLink="dashboard" [routerLinkActive]="['active-link']" class="d-flex align-items-center gap-4 px-3 py-2 ">
+            <i data-eva="home" data-eva-fill="var(--mauve-main)" data-eva-height="30" data-eva-width="30" data-eva-infinite="false"  data-eva-animation="flip" ></i>
+            <span class="text-capitalize  " >dashboard</span>
+          </a>
+        </li>
+        <li class="rounded overflow-hidden ">
+          <a routerLink="analytics" [routerLinkActive]="['active-link']"  class="d-flex align-items-center gap-4 px-3 py-2 ">
+            <i data-eva="pie-chart" data-eva-fill="var(--green-main)" data-eva-height="30" data-eva-width="30" data-eva-infinite="false"  data-eva-animation="flip" ></i>
+            <span class="text-capitalize  " >analytics</span>
+          </a>
+        </li>
+
+
+      </ul>
+    </div>
+  </nav>
+</div>
