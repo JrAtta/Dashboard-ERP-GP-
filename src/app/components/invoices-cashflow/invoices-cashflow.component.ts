@@ -38,9 +38,7 @@ export class InvoicesCashflowComponent implements OnInit {
     this.invoiceOverview = this._invoices.invoiceOverview;
     this.onResize(null);
     this.updateChart();
-
-    const Income = {
-      x: [
+    const months = [
         'Jan',
         'Feb',
         'Mar',
@@ -53,7 +51,9 @@ export class InvoicesCashflowComponent implements OnInit {
         'Oct',
         'Nov',
         'Dec',
-      ],
+      ]
+    const Income = {
+      x: months,
       y: [100, 200, 300, 280, 100, 50, 220, 260, 70, 90, 110, 120], // Earning (تقريبي)
       name: 'Income',
       type: 'bar',
@@ -65,20 +65,7 @@ export class InvoicesCashflowComponent implements OnInit {
     };
 
     const Expenses = {
-      x: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-      ],
+      x: months,
       y: [-150, -80, -40, -200, -100, -50, -100, -70, -130, -90, -110, -120], // Expense (سالب عشان تحت الصفر)
       name: 'Expenses',
       type: 'bar',

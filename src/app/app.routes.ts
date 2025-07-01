@@ -14,3 +14,4 @@ export const routes: Routes = [
     loadComponent: () => import('./components/analytics/analytics.component').then(m => m.AnalyticsComponent)
   }
 ];
+

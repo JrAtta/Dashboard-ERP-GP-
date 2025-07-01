@@ -15,6 +15,11 @@
 
     .logo{
     transform: translateX(-10px);
+      @media (max-width:431px) {
+      transform: translateX(-20px);
+      scale: .9;
+
+    }
     }
     .expand-icon{
     transform: translateX(-10px);
