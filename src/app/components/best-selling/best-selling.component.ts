@@ -5,11 +5,10 @@ import { PlotlyModule } from 'angular-plotly.js';
   selector: 'app-best-selling',
   imports: [PlotlyModule],
   templateUrl: './best-selling.component.html',
-  styleUrl: './best-selling.component.scss'
+  styleUrl: './best-selling.component.scss',
 })
-export class BestSellingComponent  implements OnInit {
-
- root = document.documentElement;
+export class BestSellingComponent implements OnInit {
+  root = document.documentElement;
   bgCard = getComputedStyle(this.root).getPropertyValue('--bg-card').trim();
   mainColor = getComputedStyle(this.root)
     .getPropertyValue('--main-color')
@@ -19,9 +18,11 @@ export class BestSellingComponent  implements OnInit {
   barLayout: any;
   config: any;
   ngOnInit() {
-
-
-    const bestSellingData = [12500, 10000, 18000, 6500, 5000];
+    // const bestSellingData = [12500, 10000, 18000, 6500, 5000];
+    const bestSellingData = [
+      12500, 10000, 18000, 6500, 5000,  15400, 6700, 9300, 11200,
+      7800,
+    ];
     const newVal: string[] = []; // for formating values to 12K ,...
 
     bestSellingData.forEach((value) => {
@@ -31,17 +32,36 @@ export class BestSellingComponent  implements OnInit {
     this.barData = [
       {
         y: bestSellingData, // عدد الوحدات المباعة
+        // x: [
+        //   'Engine Parts',
+        //   'Wheel Parts',
+        //   'Circuit Boards',
+        //   'Cables',
+        //   'Sensors',
+        // ], // أسماء المنتجات
         x: [
           'Engine Parts',
           'Wheel Parts',
           'Circuit Boards',
           'Cables',
           'Sensors',
-        ], // أسماء المنتجات
+          'Gearbox Components',
+          'Battery Packs',
+          'Fuel Injectors',
+          'Radiators',
+          'Suspension Springs',
+        ],
         type: 'bar',
         orientation: 'y', // افقي
         marker: {
-          color: ['#2B8FE7', '#5522C1', ' #60D479', '#912f56', '#FFA53E'],
+          color: ['#2B8FE7', '#5522C1', ' #60D479', '#912f56',
+            '#FFA53E',
+            '#6EC9FD',
+            '#9B59B6',
+            '#895BE5',
+            '#45B75E',
+            '#EA9014',
+          ],
           line: {
             color: this.bgCard,
             width: 5,
@@ -73,7 +93,7 @@ export class BestSellingComponent  implements OnInit {
       autosize: true,
       margin: {
         l: 25, // مسافة على الشمال عشان أسماء المنتجات تبان كاملة
-        r: 10,
+        r: 0,
         t: 50,
         b: 50,
       },
@@ -81,12 +101,9 @@ export class BestSellingComponent  implements OnInit {
       barcornerradius: 10,
     };
 
-
-      this.config = {
+    this.config = {
       responsive: true,
       displayModeBar: false,
     };
-
   }
-
 }

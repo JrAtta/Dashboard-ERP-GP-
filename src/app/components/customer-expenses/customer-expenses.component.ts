@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { PlotlyModule } from 'angular-plotly.js';
+import { RecentOrdersService } from '../../services/recent-orders.service';
 
 @Component({
   selector: 'app-customer-expenses',
@@ -20,11 +21,19 @@ export class CustomerExpensesComponent  implements OnInit{
   expensesLayout: any;
   config: any;
   isSmallScreen: boolean = false;
+  customerSummary : any = {}
+
+
+  constructor(private _orders: RecentOrdersService) {}
+
   @HostListener('window:resize', ['$event']) onResize(event: any) {
     this.isSmallScreen = window.innerWidth < 480;
     this.updateChart();
   }
+
   ngOnInit() {
+
+
     this.onResize(null); // فحص العرض عند التحميل
     this.updateChart();
 
@@ -34,8 +43,20 @@ export class CustomerExpensesComponent  implements OnInit{
     };
   }
 
+
   updateChart() {
 
+ const customersData:any[] = []
+
+    this._orders.recentOrders.forEach (order =>{
+      this.customerSummary =
+      {
+        customer: order.customer,
+        total: order.value * 10    // mock data
+      }
+      customersData.push(this.customerSummary)
+
+    });
 
     // Customer Sales Scatter Plot
     const orderSize: number[] = [];
@@ -47,23 +68,10 @@ export class CustomerExpensesComponent  implements OnInit{
     this.customerData = [
       {
         x: orders,
-        y: [
-          15000, 35000, 22000, 45000, 60000, 85000, 52000, 28000, 18000, 75000,
-        ],
+        y: customersData.map( customer => customer.total ),
         type: 'scatter',
         mode: 'markers',
-        text: [
-          'Customer A',
-          'Customer B',
-          'Customer C',
-          'Customer D',
-          'Customer E',
-          'Customer F',
-          'Customer G',
-          'Customer H',
-          'Customer I',
-          'Customer J',
-        ],
+        text: customersData.map(customer => customer.customer),
         marker: {
           color: [
             '#5522C1',
@@ -85,7 +93,7 @@ export class CustomerExpensesComponent  implements OnInit{
           },
         },
         hovertemplate:
-          '<b>%{text}</b><br>Orders: %{x}<br>Revenue: $%{y:,.0f}<extra></extra>',
+          `<b>%{text}</b><br>Orders: %{x}<br>Revenue: $%{y:,.0f}<extra></extra>`,
       },
     ];
 

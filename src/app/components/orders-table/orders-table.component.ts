@@ -4,6 +4,7 @@ import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SearchDataService } from '../../services/search-data.service';
 import { SearchPipe } from '../../pipe/search.pipe';
+import { RecentOrdersService } from '../../services/recent-orders.service';
 
 @Component({
   selector: 'app-orders-table',
@@ -28,7 +29,7 @@ export class OrdersTableComponent implements OnInit {
     optionsLimit: (number | 'All')[] = [5, 10, 20, 'All'];
     displayOrders: Iorder[] = [];
 
-    constructor(private _searchService: SearchDataService) {}
+    constructor(private _searchService: SearchDataService, private _orders:RecentOrdersService) {}
 
     setLimit(limit: number | 'All') {
       if (limit === 'All') {
@@ -38,78 +39,7 @@ export class OrdersTableComponent implements OnInit {
       }
     }
 
-    recentOrders: Iorder[] = [
-      {
-        date: '08/02/2023',
-        orderId: 'ORD-001',
-        customer: 'John Doe',
-        value: 1500,
-        status: 'Completed',
-      },
-      {
-        date: '09/02/2023',
-        orderId: 'ORD-002',
-        customer: 'Jane Smith',
-        value: 2200,
-        status: 'Pending',
-      },
-      {
-        date: '10/02/2023',
-        orderId: 'ORD-003',
-        customer: 'Alex Brown',
-        value: 1800,
-        status: 'Cancelled',
-      },
-      {
-        date: '11/02/2023',
-        orderId: 'ORD-004',
-        customer: 'Emily White',
-        value: 1950,
-        status: 'Completed',
-      },
-      {
-        date: '12/02/2023',
-        orderId: 'ORD-005',
-        customer: 'Michael Green',
-        value: 2100,
-        status: 'Pending',
-      },
-      {
-        date: '13/02/2023',
-        orderId: 'ORD-006',
-        customer: 'Laura Black',
-        value: 2750,
-        status: 'Completed',
-      },
-      {
-        date: '14/02/2023',
-        orderId: 'ORD-007',
-        customer: 'Chris Blue',
-        value: 1600,
-        status: 'Cancelled',
-      },
-      {
-        date: '15/02/2023',
-        orderId: 'ORD-008',
-        customer: 'Sophie Grey',
-        value: 2400,
-        status: 'Pending',
-      },
-      {
-        date: '16/02/2023',
-        orderId: 'ORD-009',
-        customer: 'Daniel King',
-        value: 3000,
-        status: 'Completed',
-      },
-      {
-        date: '17/02/2023',
-        orderId: 'ORD-010',
-        customer: 'Olivia Rose',
-        value: 1850,
-        status: 'Completed',
-      },
-    ];
+    recentOrders: Iorder[] =[]
 
     sortData(column: any) {
       if (this.sortColumn === column) {
@@ -132,9 +62,9 @@ export class OrdersTableComponent implements OnInit {
     }
 
     ngOnInit(): void {
-      //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-      //Add 'implements OnInit' to the class.
-       this.setLimit(this.limit);
+
+      this.recentOrders = this._orders.recentOrders
+      this.setLimit(this.limit);
       this.sortData(this.sortColumn);
 
       this._searchService.searchValue$.subscribe((value) => {
