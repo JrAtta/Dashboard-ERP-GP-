@@ -14,15 +14,16 @@
     color: var(--main-color);
 
     .logo{
-    transform: translateX(-10px);
+      // transform: translateX(-20px);
+    // transform: translateX(-10px);
       @media (max-width:431px) {
-      transform: translateX(-20px);
-      scale: .9;
+      transform: translateX(-13px);
+      scale: .8;
 
     }
     }
     .expand-icon{
-    transform: translateX(-10px);
+    // transform: translateX(-10px);
 
     }
   }
