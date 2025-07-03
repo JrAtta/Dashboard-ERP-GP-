@@ -164,8 +164,8 @@ export class ChartsComponent implements OnInit {
             opacity: 1,
           },
           opacity: 0.6,
-          fill: 'toself',
-          // fill: 'tozeroy',
+          // fill: 'toself',
+          fill: 'tozeroy',
         },
       ];
 
